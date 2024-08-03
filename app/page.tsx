@@ -70,7 +70,7 @@ export default async function Home() {
   return (
     <main className="w-full">
       <div className="mx-12 md:mx-[300px] mt-12 text-justify flex flex-col gap-4 text-lg">
-        <PortableText value={result[1].content} components={ptComponents} />
+        <PortableText value={result[2].content} components={ptComponents} />
       </div>
     </main>
   );

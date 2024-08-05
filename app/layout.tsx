@@ -15,22 +15,33 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" data-theme="night">
+    <html lang="en" data-theme="light">
       <body className={inter.className}>
         <div className="drawer drawer-end">
           <input id="my-drawer-3" type="checkbox" className="drawer-toggle" />
           <div className="drawer-content flex flex-col">
             {/* Navbar */}
             <div className="navbar bg-base-300 w-full">
-              <div className="mx-2 flex-1 px-2">Navbar Title</div>
+              <div className="mx-2 flex-1 text-xl md:text-3xl font-extrabold px-2">
+                Debnews
+              </div>
               <div className="hidden flex-none lg:block">
-                <ul className="menu menu-horizontal">
+                <ul className="menu menu-horizontal font-semibold">
                   {/* Navbar menu content here */}
                   <li>
-                    <a>Navbar Item 1</a>
+                    <a>Games</a>
                   </li>
                   <li>
-                    <a>Navbar Item 2</a>
+                    <a>Gadgets</a>
+                  </li>
+                  <li>
+                    <a>Movies</a>
+                  </li>
+                  <li>
+                    <a>Tech</a>
+                  </li>
+                  <li>
+                    <a>Trending</a>
                   </li>
                 </ul>
               </div>
@@ -54,14 +65,14 @@ export default function RootLayout({
               </div>
             </div>
             {/* Page content here */}
-            <main className="px-6 bg-neutral">{children}</main>
+            <main className="px-4 sm:px-12 md:px-8">{children}</main>
           </div>
           <div className="drawer-side">
             <label
               htmlFor="my-drawer-3"
               aria-label="close sidebar"
               className="drawer-overlay"></label>
-            <ul className="menu bg-base-200 min-h-full w-80 p-4">
+            <ul className="menu bg-base-200 min-h-full w-64 p-4">
               {/* Sidebar content here */}
               <li>
                 <a>Sidebar Item 1</a>

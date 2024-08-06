@@ -21,8 +21,8 @@ export default function RootLayout({
           <input id="my-drawer-3" type="checkbox" className="drawer-toggle" />
           <div className="drawer-content flex flex-col">
             {/* Navbar */}
-            <div className="navbar bg-base-300 w-full">
-              <div className="mx-2 flex-1 text-xl md:text-3xl font-extrabold px-2">
+            <div className="navbar bg-base-300 w-full px-10">
+              <div className="mx-2 flex-1 text-xl md:text-3xl font-extrabold">
                 Debnews
               </div>
               <div className="hidden flex-none lg:block">
@@ -65,7 +65,7 @@ export default function RootLayout({
               </div>
             </div>
             {/* Page content here */}
-            <main className="px-4 sm:px-12 md:px-8">{children}</main>
+            <main className="px-4 sm:px-12 xl:px-24">{children}</main>
           </div>
           <div className="drawer-side">
             <label

@@ -15,13 +15,13 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" data-theme="light">
+    <html lang="en" data-theme="night">
       <body className={inter.className}>
         <div className="drawer drawer-end">
           <input id="my-drawer-3" type="checkbox" className="drawer-toggle" />
           <div className="drawer-content flex flex-col">
             {/* Navbar */}
-            <div className="navbar bg-base-300 w-full px-10">
+            <div className="navbar bg-base-300 w-full px-10 fixed">
               <div className="mx-2 flex-1 text-xl md:text-3xl font-extrabold">
                 Debnews
               </div>
@@ -65,7 +65,7 @@ export default function RootLayout({
               </div>
             </div>
             {/* Page content here */}
-            <main className="px-4 sm:px-12 xl:px-24">{children}</main>
+            <main className="px-4 mt-20 sm:px-12 xl:px-24">{children}</main>
           </div>
           <div className="drawer-side">
             <label

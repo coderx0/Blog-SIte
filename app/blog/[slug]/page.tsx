@@ -42,7 +42,7 @@ const ptComponents = {
           href={value?.href}
           rel={"noindex nofollow"}
           target="_blank"
-          className="text-blue-700">
+          className="text-blue-400">
           {children}
         </a>
       );

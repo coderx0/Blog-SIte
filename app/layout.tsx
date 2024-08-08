@@ -84,6 +84,9 @@ export default function RootLayout({
             </ul>
           </div>
         </div>
+        <footer className="mt-12 bg-secondary w-full h-[200px] flex justify-center items-center">
+          <p className="text-center text-3xl font-extrabold">Footer</p>
+        </footer>
       </body>
     </html>
   );

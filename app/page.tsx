@@ -241,9 +241,15 @@ export default async function Home() {
           </p>
         </div>
         <div className="lg:flex gap-8">
-          <div className="w-full mt-[20px] lg:mt-0 lg:h-[500px]">
+          <div className="w-full mt-[20px] lg:mt-0">
             <Link href={`/blog/${imp.slug.current}`}>
-              <ImageComponent imgSrc={imp.thumbnail} height={280} width={400} />
+              <div>
+                <ImageComponent
+                  imgSrc={imp.thumbnail}
+                  height={280}
+                  width={400}
+                />
+              </div>
             </Link>
             <Link
               href={`/blog/${imp.slug.current}`}

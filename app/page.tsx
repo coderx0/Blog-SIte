@@ -1,7 +1,8 @@
-import { client } from "./utils/sanity/client";
+import { client } from "../utils/sanity/client";
 import imageUrlBuilder from "@sanity/image-url";
 import RightArrow from "@/Icons/rightArrow";
 import Link from "next/link";
+import ImageComponent from "@/Components/ImageComponent/Image";
 
 const builder = imageUrlBuilder(client);
 function urlFor(source: any) {
@@ -22,7 +23,6 @@ const CONTENT_QUERY = `*[_type == "post"] {
 
 export default async function Home() {
   const [imp, ...result] = await client.fetch(CONTENT_QUERY);
-
   return (
     <div className="">
       <div className="lg:h-[650px] flex flex-col lg:flex-row gap-4 md:pt-4">
@@ -33,12 +33,14 @@ export default async function Home() {
               {result.map((blog: any) => (
                 <Link key={blog.title} href={`/blog/${blog.slug.current}`}>
                   <div key={blog.title}>
-                    <img
-                      src={urlFor(blog.thumbnail).width(200).height(120).url()}
-                      alt="Thumbnail"
-                      className="w-full"
+                    <ImageComponent
+                      imgSrc={blog.thumbnail}
+                      height={120}
+                      width={200}
                     />
-                    <p className="mt-4 font-semibold text-sm">{blog.title}</p>
+                    <p className="mt-4 font-semibold text-sm hover:text-base-content/75 transition duration-200">
+                      {blog.title}
+                    </p>
                     <p className="mt-2 md:hidden">{blog.description}</p>
                   </div>
                 </Link>
@@ -48,13 +50,15 @@ export default async function Home() {
           <div className="flex-1">
             <Link href={`/blog/${imp.slug.current}`}>
               <div className="w-full mt-[20px] md:mt-[60px]">
-                <img
-                  src={urlFor(imp.thumbnail).width(400).height(280).url()}
-                  alt="Thumbnail"
-                  className="w-full"
+                <ImageComponent
+                  imgSrc={imp.thumbnail}
+                  height={280}
+                  width={400}
                 />
-                <p className="mt-4 font-bold">{imp.title}</p>
-                <p className="mt-2">{imp.description}</p>
+                <div className="hover:text-base-content/75 transition duration-200">
+                  <p className="mt-4 font-bold">{imp.title}</p>
+                  <p className="mt-2">{imp.description}</p>
+                </div>
               </div>
             </Link>
           </div>
@@ -65,23 +69,27 @@ export default async function Home() {
             {[imp, ...result].map((blog: any) => (
               <div
                 key={blog.title}
-                className="flex gap-4 justify-center h-[90px] sm:h-[120px] w-full hover:bg-base-200 transition duration-750 rounded-md">
-                <div className="w-[40%]">
-                  <img
-                    src={urlFor(blog.thumbnail).width(140).height(140).url()}
-                    alt="Thumbnail"
-                    className="w-full h-full object-cover"
-                  />
+                className="flex flex-col md:flex-row gap-4 justify-center sm:h-[120px] md:h-[160px] lg:h-[120px] w-full hover:bg-base-200 transition duration-750 rounded-md">
+                <div className="w-full md:w-[40%]">
+                  <Link href={`/blog/${blog.slug.current}`}>
+                    <ImageComponent
+                      imgSrc={blog.thumbnail}
+                      height={120}
+                      width={200}
+                    />
+                  </Link>
                 </div>
                 <div className="flex flex-1 flex-col justify-between p-2">
-                  <div>
+                  <Link
+                    href={`/blog/${blog.slug.current}`}
+                    className="hover:text-base-content/75 transition duration-200">
                     <h2 className="flex-1 font-semibold text-[12px] sm:text-sm">
                       {blog.title}
                     </h2>
                     <p className="hidden md:block lg:hidden text-sm mt-4">
                       {blog.description}
                     </p>
-                  </div>
+                  </Link>
                   <div className="flex text-[10px] sm:text= md:text-[12px] mt-2 justify-between">
                     <p className="bg-neutral-content rounded-md text-neutral px-2 font-semibold">
                       {blog.categories.title}
@@ -109,15 +117,19 @@ export default async function Home() {
                 <div
                   key={blog.title}
                   className="flex flex-col gap-4 md:w-[400px]">
-                  <div className="w-full">
-                    <img
-                      src={urlFor(blog.thumbnail).width(400).height(240).url()}
-                      alt="Thumbnail"
-                      className="w-full h-full object-cover"
+                  <Link href={`/blog/${blog.slug.current}`} className="w-full">
+                    <ImageComponent
+                      imgSrc={blog.thumbnail}
+                      height={240}
+                      width={400}
                     />
-                  </div>
+                  </Link>
                   <div className="flex flex-col-reverse md:flex-col gap-4">
-                    <h2 className="font-bold md:text-sm">{blog.title}</h2>
+                    <Link href={`/blog/${blog.slug.current}`}>
+                      <h2 className="font-bold md:text-sm hover:text-base-content/75 transition duration-200">
+                        {blog.title}
+                      </h2>
+                    </Link>
                     <div className="flex text-[12px] justify-between">
                       <p className="bg-neutral-content rounded-md text-neutral px-2 font-semibold">
                         {blog.categories.title}
@@ -142,15 +154,19 @@ export default async function Home() {
                 <div
                   key={blog.title}
                   className="flex flex-col gap-4 md:w-[400px]">
-                  <div className="w-full">
-                    <img
-                      src={urlFor(blog.thumbnail).width(400).height(240).url()}
-                      alt="Thumbnail"
-                      className="w-full h-full object-cover"
+                  <Link href={`/blog/${blog.slug.current}`} className="w-full">
+                    <ImageComponent
+                      imgSrc={blog.thumbnail}
+                      height={240}
+                      width={400}
                     />
-                  </div>
+                  </Link>
                   <div className="flex flex-col-reverse md:flex-col gap-4">
-                    <h2 className="font-bold md:text-sm">{blog.title}</h2>
+                    <Link href={`/blog/${blog.slug.current}`}>
+                      <h2 className="font-bold md:text-sm hover:text-base-content/75 transition duration-200">
+                        {blog.title}
+                      </h2>
+                    </Link>
                     <div className="flex text-[12px] justify-between">
                       <p className="bg-neutral-content rounded-md text-neutral px-2 font-semibold">
                         {blog.categories.title}
@@ -183,20 +199,24 @@ export default async function Home() {
               <div
                 key={blog.title}
                 className="flex flex-col md:flex-row gap-4 lg:gap-12">
-                <div className="w-full md:max-w-[35%]">
-                  <img
-                    src={urlFor(blog.thumbnail).width(400).height(240).url()}
-                    alt="Thumbnail"
-                    className="w-full h-full object-cover"
+                <Link
+                  href={`/blog/${blog.slug.current}`}
+                  className="w-full md:max-w-[35%]">
+                  <ImageComponent
+                    imgSrc={blog.thumbnail}
+                    height={240}
+                    width={400}
                   />
-                </div>
+                </Link>
                 <div className="flex flex-col-reverse md:flex-col gap-4">
-                  <div className="flex flex-col gap-2 md:gap-4">
+                  <Link
+                    href={`/blog/${blog.slug.current}`}
+                    className="flex flex-col gap-2 md:gap-4 hover:text-base-content/75 transition duration-200">
                     <h2 className="font-bold md:text-sm lg:text-xl">
                       {blog.title}
                     </h2>
                     <p className="text-[12px] lg:text-sm">{blog.description}</p>
-                  </div>
+                  </Link>
                   <div className="flex text-[12px] justify-between md:justify-start md:gap-8">
                     <p className="bg-neutral-content rounded-md text-neutral px-2 font-semibold">
                       {blog.categories.title}
@@ -221,40 +241,49 @@ export default async function Home() {
           </p>
         </div>
         <div className="lg:flex gap-8">
-          <div className="w-full mt-[20px] lg:mt-0">
-            <img
-              src={urlFor(imp.thumbnail).width(400).height(280).url()}
-              alt="Thumbnail"
-              className="w-full"
-            />
-            <p className="mt-4 font-bold">{imp.title}</p>
-            <p className="mt-2">{imp.description}</p>
+          <div className="w-full mt-[20px] lg:mt-0 lg:h-[500px]">
+            <Link href={`/blog/${imp.slug.current}`}>
+              <ImageComponent imgSrc={imp.thumbnail} height={280} width={400} />
+            </Link>
+            <Link
+              href={`/blog/${imp.slug.current}`}
+              className="hover:text-base-content/75 transition duration-200">
+              <p className="mt-4 font-bold">{imp.title}</p>
+              <p className="mt-2">{imp.description}</p>
+            </Link>
           </div>
           <div className="mt-10 lg:mt-0 flex flex-col gap-8 md:flex-row">
             <div className="flex flex-col gap-8">
               {result.map((blog: any) => (
-                <div key={blog.title}>
-                  <img
-                    src={urlFor(blog.thumbnail).width(200).height(120).url()}
-                    alt="Thumbnail"
-                    className="w-full"
-                  />
+                <Link
+                  href={`/blog/${blog.slug.current}`}
+                  key={blog.title}
+                  className="hover:text-base-content/75 transition duration-200">
+                  <div>
+                    <ImageComponent
+                      imgSrc={blog.thumbnail}
+                      height={120}
+                      width={200}
+                    />
+                  </div>
                   <p className="mt-4 font-semibold text-sm">{blog.title}</p>
                   <p className="mt-2 md:hidden">{blog.description}</p>
-                </div>
+                </Link>
               ))}
             </div>
             <div className="flex flex-col gap-8">
               {result.map((blog: any) => (
-                <div key={blog.title}>
-                  <img
-                    src={urlFor(blog.thumbnail).width(200).height(120).url()}
-                    alt="Thumbnail"
-                    className="w-full"
-                  />
+                <Link href={`/blog/${blog.slug.current}`} key={blog.title}>
+                  <div>
+                    <ImageComponent
+                      imgSrc={blog.thumbnail}
+                      height={120}
+                      width={200}
+                    />
+                  </div>
                   <p className="mt-4 font-semibold text-sm">{blog.title}</p>
                   <p className="mt-2 md:hidden">{blog.description}</p>
-                </div>
+                </Link>
               ))}
             </div>
           </div>

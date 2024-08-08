@@ -1,4 +1,5 @@
-import { client } from "../../utils/sanity/client";
+import ImageComponent from "@/Components/ImageComponent/Image";
+import { client } from "../../../utils/sanity/client";
 import {
   PortableText,
   PortableTextMarkComponentProps,
@@ -18,17 +19,17 @@ const ptComponents = {
         return null;
       }
       return (
-        <div className="w-full flex justify-center items-center my-6">
+        <div className="w-full flex justify-center items-center my-6 h-[220px]">
           <img
             alt={value.alt || " "}
             loading="lazy"
             src={urlFor(value)
-              .width(320)
-              .height(240)
+              .width(370)
+              .height(220)
               .fit("max")
               .auto("format")
               .url()}
-            className="w-full h-[340px] object-cover"
+            className="w-full h-full object-cover"
           />
         </div>
       );
@@ -54,15 +55,25 @@ const QUERY = `*[_type == "post" && slug.current == $slug][0]{
   slug,
   content,
   authorName,
-  tags
+  tags,
+  thumbnail
 }
 `;
 
 const BlogDetails = async ({ params }: { params: { slug: string } }) => {
   const result = await client.fetch(QUERY, { slug: params.slug });
   return (
-    <div className="mx-12 md:mx-[300px] mt-12 text-justify flex flex-col gap-4 text-lg">
-      <PortableText value={result.content} components={ptComponents} />{" "}
+    <div className="flex flex-col lg:flex-row gap-8 mt-12">
+      <div className="flex-1">
+        <h2 className="text-2xl font-bold">{result.title}</h2>
+        <div className="my-12 md:px-12">
+          <ImageComponent imgSrc={result.thumbnail} height={220} width={370} />
+        </div>
+        <div className="text-justify text-lg lg:text-xl">
+          <PortableText value={result.content} components={ptComponents} />
+        </div>
+      </div>
+      <div className="w-[30%] bg-blue-100 mt-20">Hello wolrd</div>
     </div>
   );
 };

@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
+import Link from "next/link";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -21,9 +22,9 @@ export default function RootLayout({
           <input id="my-drawer-3" type="checkbox" className="drawer-toggle" />
           <div className="drawer-content flex flex-col">
             {/* Navbar */}
-            <div className="navbar bg-base-300 w-full px-10 fixed">
+            <div className="navbar bg-base-300 w-full md:px-10 fixed z-10">
               <div className="mx-2 flex-1 text-xl md:text-3xl font-extrabold">
-                Debnews
+                <Link href="/">Debnews</Link>
               </div>
               <div className="hidden flex-none lg:block">
                 <ul className="menu menu-horizontal font-semibold">
@@ -67,7 +68,7 @@ export default function RootLayout({
             {/* Page content here */}
             <main className="px-4 mt-20 sm:px-12 xl:px-24">{children}</main>
           </div>
-          <div className="drawer-side">
+          <div className="drawer-side z-20">
             <label
               htmlFor="my-drawer-3"
               aria-label="close sidebar"

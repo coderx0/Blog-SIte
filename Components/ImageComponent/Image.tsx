@@ -18,15 +18,22 @@ type ImageProps = {
   };
   width: number;
   height: number;
+  animate?: boolean;
 };
 
-const ImageComponent = ({ imgSrc, height, width }: ImageProps) => {
+const ImageComponent = ({
+  imgSrc,
+  height,
+  width,
+  animate = true,
+}: ImageProps) => {
   return (
     <Image
       src={urlFor(imgSrc).width(width).height(height).url()}
       alt="Thumbnail"
-      className="w-full h-full object-cover hover:brightness-75
-  transition duration-200"
+      className={`w-full h-full object-cover ${
+        animate ? "hover:brightness-75 transition duration-200 ease-in-out" : ""
+      }`}
       height={height}
       width={width}
     />

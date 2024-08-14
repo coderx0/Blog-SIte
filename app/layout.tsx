@@ -30,16 +30,16 @@ export default function RootLayout({
                 <ul className="menu menu-horizontal font-semibold">
                   {/* Navbar menu content here */}
                   <li>
-                    <a>Games</a>
+                    <Link href={"/category/Games"}>Games</Link>
                   </li>
                   <li>
-                    <a>Gadgets</a>
+                    <Link href={"/category/Gadgets"}>Gadgets</Link>
                   </li>
                   <li>
-                    <a>Movies</a>
+                    <Link href={"/category/Movies"}>Movies</Link>
                   </li>
                   <li>
-                    <a>Tech</a>
+                    <Link href={"/category/Tech"}>Tech</Link>
                   </li>
                   <li>
                     <a>Trending</a>

@@ -66,7 +66,7 @@ const QUERY = `*[_type == "post" && slug.current == $slug][0]{
 
 const BlogDetails = async ({ params }: { params: { slug: string } }) => {
   const result = await client.fetch(QUERY, { slug: params.slug });
-  // console.log(result);
+  console.log(result);
   return (
     <div>
       <div className="flex flex-col lg:flex-row lg:gap-8 mt-12">
@@ -88,7 +88,10 @@ const BlogDetails = async ({ params }: { params: { slug: string } }) => {
       </div>
       <div className="mt-12 lg:mt-24">
         <h2 className="text-xl font-bold">More Like This</h2>
-        <MoreLikeThisSection category={result.categories._id} />
+        <MoreLikeThisSection
+          category={result.categories._id}
+          slug={result.slug.current}
+        />
       </div>
     </div>
   );

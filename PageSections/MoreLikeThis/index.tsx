@@ -2,7 +2,7 @@ import ImageComponent from "@/Components/ImageComponent/Image";
 import { client } from "../../utils/sanity/client";
 import Link from "next/link";
 
-const QUERY = `*[_type == "post" && categories._ref == $categoryId] | order(_createdAt desc)[0...3]{
+const QUERY = `*[_type == "post" && categories._ref == $categoryId && slug.current != $slug] | order(_createdAt desc)[0...3]{
     title,
     slug,
     thumbnail,
@@ -11,9 +11,13 @@ const QUERY = `*[_type == "post" && categories._ref == $categoryId] | order(_cre
 
 type Props = {
   category: string;
+  slug: string;
 };
 const MoreLikeThisSection = async (props: Props) => {
-  const results = await client.fetch(QUERY, { categoryId: props.category });
+  const results = await client.fetch(QUERY, {
+    categoryId: props.category,
+    slug: props.slug,
+  });
   //   console.log(results);
 
   return (

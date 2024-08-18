@@ -1,9 +1,7 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { HeaderFont } from "@/fonts";
 import "./globals.css";
 import Link from "next/link";
-
-const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -17,7 +15,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" data-theme="night">
-      <body className={inter.className}>
+      <body className={HeaderFont.className}>
         <div className="drawer drawer-end">
           <input id="my-drawer-3" type="checkbox" className="drawer-toggle" />
           <div className="drawer-content flex flex-col">
@@ -31,9 +29,6 @@ export default function RootLayout({
                   {/* Navbar menu content here */}
                   <li>
                     <Link href={"/category/Games"}>Games</Link>
-                  </li>
-                  <li>
-                    <Link href={"/category/Gadgets"}>Gadgets</Link>
                   </li>
                   <li>
                     <Link href={"/category/Movies"}>Movies</Link>

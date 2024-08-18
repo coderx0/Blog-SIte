@@ -18,7 +18,6 @@ const MoreLikeThisSection = async (props: Props) => {
     categoryId: props.category,
     slug: props.slug,
   });
-  //   console.log(results);
 
   return (
     <div className="mt-6">

@@ -6,6 +6,7 @@ import {
 } from "@portabletext/react";
 import imageUrlBuilder from "@sanity/image-url";
 import MoreLikeThisSection from "@/PageSections/MoreLikeThis";
+import { BodyFont } from "@/fonts";
 
 const builder = imageUrlBuilder(client);
 
@@ -66,7 +67,6 @@ const QUERY = `*[_type == "post" && slug.current == $slug][0]{
 
 const BlogDetails = async ({ params }: { params: { slug: string } }) => {
   const result = await client.fetch(QUERY, { slug: params.slug });
-  console.log(result);
   return (
     <div>
       <div className="flex flex-col lg:flex-row lg:gap-8 mt-12">
@@ -80,7 +80,8 @@ const BlogDetails = async ({ params }: { params: { slug: string } }) => {
               animate={false}
             />
           </div>
-          <div className="text-justify text-lg lg:text-xl">
+          <div
+            className={` text-lg lg:text-xl flex flex-col gap-4 ${BodyFont.className}`}>
             <PortableText value={result.content} components={ptComponents} />
           </div>
         </div>

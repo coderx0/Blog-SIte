@@ -30,7 +30,7 @@ const CONTENT_QUERY = `*[_type == "post"] {
 export default async function Home() {
   const [imp, ...result] = await client.fetch(CONTENT_QUERY);
   return (
-    <div className="">
+    <>
       <div className="lg:h-[650px] flex flex-col lg:flex-row gap-4 md:pt-4">
         <Section1 result={result} imp={imp} />
       </div>
@@ -43,6 +43,6 @@ export default async function Home() {
       <div className="mt-10 lg:mt-20">
         <Section4 result={result} imp={imp} />
       </div>
-    </div>
+    </>
   );
 }

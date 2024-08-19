@@ -5,7 +5,7 @@ import RightArrow from "@/Icons/rightArrow";
 
 const Section2 = ({ result, imp }: { result: Blog[]; imp: Blog }) => {
   return (
-    <div className="flex flex-col-reverse justify-between lg:flex-row mt-16 lg:mt-0">
+    <>
       <div className="w-full lg:w-[75%] flex flex-col gap-12 lg:gap-24">
         <div className="">
           <div className="flex justify-between items-center mb-6">
@@ -87,7 +87,7 @@ const Section2 = ({ result, imp }: { result: Blog[]; imp: Blog }) => {
         {" "}
         AD
       </div>
-    </div>
+    </>
   );
 };
 

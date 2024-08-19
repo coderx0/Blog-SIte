@@ -5,7 +5,7 @@ import RightArrow from "@/Icons/rightArrow";
 
 const Section4 = ({ result, imp }: { result: Blog[]; imp: Blog }) => {
   return (
-    <div className="mt-10 lg:mt-20">
+    <>
       <div className="flex justify-between mb-6">
         <h2 className="text-2xl font-bold">Games</h2>
         <p className="flex gap-2 items-center">
@@ -63,7 +63,7 @@ const Section4 = ({ result, imp }: { result: Blog[]; imp: Blog }) => {
           </div>
         </div>
       </div>
-    </div>
+    </>
   );
 };
 

@@ -6,7 +6,7 @@ import { Blog } from "@/types";
 
 const Section1 = ({ result, imp }: { result: Blog[]; imp: Blog }) => {
   return (
-    <div className="lg:h-[650px] flex flex-col lg:flex-row gap-4 md:pt-4">
+    <>
       <div className="w-full lg:w-[70%] flex flex-col-reverse md:flex-row md:gap-6">
         <div className="mt-6 md:mt-0 md:w-[30%]">
           <h1 className="text-2xl font-bold">Trending</h1>
@@ -74,7 +74,7 @@ const Section1 = ({ result, imp }: { result: Blog[]; imp: Blog }) => {
           ))}
         </div>
       </div>
-    </div>
+    </>
   );
 };
 

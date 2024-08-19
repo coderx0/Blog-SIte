@@ -27,32 +27,22 @@ const CONTENT_QUERY = `*[_type == "post"] {
 }
 `;
 
-// type Blog = {
-//   thumbnail: {
-//     _type: string;
-//     asset: {
-//       _ref: string;
-//       _type: string;
-//     };
-//   };
-//   description: string;
-//   _createdAt: string;
-//   categories: { title: string };
-//   title: string;
-//   slug: {
-//     current: string;
-//     _type: string;
-//   };
-// };
-
 export default async function Home() {
   const [imp, ...result] = await client.fetch(CONTENT_QUERY);
   return (
     <div className="">
-      <Section1 result={result} imp={imp} />
-      <Section2 result={result} imp={imp} />
-      <Section3 result={result} imp={imp} />
-      <Section4 result={result} imp={imp} />
+      <div className="lg:h-[650px] flex flex-col lg:flex-row gap-4 md:pt-4">
+        <Section1 result={result} imp={imp} />
+      </div>
+      <div className="flex flex-col-reverse justify-between lg:flex-row mt-16 lg:mt-0">
+        <Section2 result={result} imp={imp} />
+      </div>
+      <div className="mt-10 flex flex-col-reverse lg:flex-row justify-between ">
+        <Section3 result={result} imp={imp} />
+      </div>
+      <div className="mt-10 lg:mt-20">
+        <Section4 result={result} imp={imp} />
+      </div>
     </div>
   );
 }

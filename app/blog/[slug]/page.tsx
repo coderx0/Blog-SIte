@@ -5,8 +5,8 @@ import {
   PortableTextMarkComponentProps,
 } from "@portabletext/react";
 import imageUrlBuilder from "@sanity/image-url";
-import MoreLikeThisSection from "@/PageSections/MoreLikeThis";
 import { BodyFont } from "@/fonts";
+import MoreLikeThisSection from "@/Components/PageSections/MoreLikeThis";
 
 const builder = imageUrlBuilder(client);
 

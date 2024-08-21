@@ -1,6 +1,7 @@
 import React from "react";
 import ImageComponent from "../ImageComponent/Image";
 import Link from "next/link";
+import { BodyFont } from "@/fonts";
 
 type CardProps = {
   title: string;
@@ -29,9 +30,7 @@ const Card = ({
   return (
     <div className="">
       <Link href={`/blog/${slug}`}>
-        <div
-          // style={{ maxHeight: imgHeight, maxWidth: imgWidth }}
-          className="w-full h-full">
+        <div className="w-full h-full">
           <ImageComponent
             imgSrc={thumbnail}
             height={imgHeight}
@@ -41,13 +40,18 @@ const Card = ({
       </Link>
       <Link href={`/blog/${slug}`}>
         <div>
-          <p className="mt-4 font-semibold text-sm hover:text-base-content/75 transition duration-200">
+          <h3 className="mt-4 font-semibold  hover:text-base-content/75 transition duration-200 text-[18px] md:text-[24px]">
             {title}
-          </p>
+          </h3>
           {hideDescription ? (
-            <p className="mt-2 md:hidden">{description}</p>
+            <h4 className={`mt-2 md:hidden text-[14px] ${BodyFont.className}`}>
+              {description}
+            </h4>
           ) : (
-            <p className="mt-2">{description}</p>
+            <h4
+              className={`mt-2 text-sm text-[14px] md:text-[16px] ${BodyFont.className}`}>
+              {description}
+            </h4>
           )}
         </div>
       </Link>

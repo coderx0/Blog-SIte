@@ -8,7 +8,7 @@ const Section3 = ({ result, imp }: { result: Blog[]; imp: Blog }) => {
     <div className="mt-10 flex flex-col-reverse lg:flex-row justify-between ">
       <div className="w-full lg:w-[75%]">
         <div className="flex justify-between items-center mb-6">
-          <h2 className="text-2xl font-bold">Technology</h2>
+          <h2 className="text-2xl font-bold">Latest</h2>
           <p className="flex gap-2">
             <span>View All</span>
             <RightArrow />

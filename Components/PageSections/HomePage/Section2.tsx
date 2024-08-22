@@ -47,7 +47,7 @@ const Section2 = ({ result, imp }: { result: Blog[]; imp: Blog }) => {
         </div>
       </div>
 
-      <div className="w-full lg:w-[20%] h-[200px] lg:h-[800px] bg-red-100 text-3xl flex justify-center items-center font-bold text-black mb-8">
+      <div className="w-full lg:w-[22%] h-[200px] lg:h-[800px] bg-red-100 text-3xl flex justify-center items-center font-bold text-black mb-8">
         {" "}
         AD
       </div>

@@ -21,7 +21,7 @@ const Section1 = ({ result, imp }: { result: Blog[]; imp: Blog }) => {
       </div>
       <div className="flex flex-col gap-8">
         {[imp, ...result].map((blog: Blog) => (
-          <div key={blog.title} className="flex flex-col md:flex-row md:gap-6">
+          <div key={blog.title} className="flex flex-col md:flex-row md:gap-6 ">
             <Link
               href={`/blog/${blog.slug.current}`}
               className="w-full md:w-[260px]">

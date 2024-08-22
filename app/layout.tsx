@@ -79,9 +79,48 @@ export default function RootLayout({
             </ul>
           </div>
         </div>
-        <footer className="mt-12 bg-secondary w-full h-[200px] flex justify-center items-center">
-          <p className="text-center text-3xl font-extrabold">Footer</p>
+        <footer className="mt-12 bg-base-300 w-full flex flex-col justify-center items-center p-4 sm:p-8">
+          <p className="text-center text-3xl font-extrabold mb-4">Footer</p>
+          <div className="flex flex-col sm:flex-row sm:space-x-8">
+            <ul className="flex flex-col space-y-2 mb-4 sm:mb-0">
+              <li>
+                <Link href={"/about"}>
+                  <p className="hover:text-gray-500">About</p>
+                </Link>
+              </li>
+              <li>
+                <Link href={"/privacy-policy"}>
+                  <p className="hover:text-gray-500">Privacy Policy</p>
+                </Link>
+              </li>
+              <li>
+                <Link href={"/contact"}>
+                  <p className="hover:text-gray-500">Contact</p>
+                </Link>
+              </li>
+            </ul>
+            <ul className="flex flex-col space-y-2">
+              <li>
+                <Link href={"/category/Movies"}>
+                  <p className="hover:text-gray-500">Movies</p>
+                </Link>
+              </li>
+              <li>
+                <Link href={"/category/Tech"}>
+                  <p className="hover:text-gray-500">Tech</p>
+                </Link>
+              </li>
+              <li>
+                <Link href={"/category/Trending"}>
+                  <p className="hover:text-gray-500">Trending</p>
+                </Link>
+              </li>
+            </ul>
+          </div>
         </footer>
+        {/* <footer className="mt-12 bg-secondary w-full h-[200px] flex justify-center items-center">
+          <p className="text-center text-3xl font-extrabold">Footer</p>
+        </footer> */}
       </body>
     </html>
   );

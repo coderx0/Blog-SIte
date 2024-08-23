@@ -7,6 +7,8 @@ import {
 import imageUrlBuilder from "@sanity/image-url";
 import { BodyFont } from "@/fonts";
 import MoreLikeThisSection from "@/Components/PageSections/MoreLikeThis";
+import type { Metadata, ResolvingMetadata } from "next";
+import { Blog } from "@/types";
 
 const builder = imageUrlBuilder(client);
 
@@ -26,8 +28,8 @@ const ptComponents = {
             alt={value.alt || " "}
             loading="lazy"
             src={urlFor(value)
-              .width(370)
-              .height(220)
+              .width(800)
+              .height(520)
               .fit("max")
               .auto("format")
               .url()}
@@ -49,6 +51,29 @@ const ptComponents = {
         </a>
       );
     },
+    strong: ({ children }: any) => (
+      <em className="font-semibold">{children}</em>
+    ),
+  },
+  list: {
+    bullet: ({ children }: any) => <ul className="mt-xl px-8">{children}</ul>,
+    number: ({ children }: any) => <ol className="mt-lg">{children}</ol>,
+  },
+  listItem: {
+    bullet: ({ children }: any) => (
+      <li style={{ listStyleType: "disc" }}>{children}</li>
+    ),
+    number: ({ children }: any) => (
+      <li className="text-2xl text-red-200">{children}</li>
+    ),
+  },
+  block: {
+    h3: ({ children }: any) => (
+      <h3 className="text-2xl text-primary mt-8">{children}</h3>
+    ),
+    h4: ({ children }: any) => (
+      <h4 className="text-2xl text-primary mt-8">{children}</h4>
+    ),
   },
 };
 
@@ -65,8 +90,33 @@ const QUERY = `*[_type == "post" && slug.current == $slug][0]{
 }
 `;
 
+export async function generateMetadata(
+  { params }: { params: { slug: string } },
+  parent: ResolvingMetadata
+): Promise<Metadata> {
+  const result: Blog = await client.fetch(QUERY, { slug: params.slug });
+
+  // const previousImages = (await parent).openGraph?.images || []
+
+  return {
+    title: result.title,
+    description: result.description,
+    openGraph: {
+      images: [
+        urlFor(result.thumbnail)
+          .width(500)
+          .height(320)
+          .fit("max")
+          .auto("format")
+          .url(),
+      ],
+    },
+  };
+}
+
 const BlogDetails = async ({ params }: { params: { slug: string } }) => {
   const result = await client.fetch(QUERY, { slug: params.slug });
+
   return (
     <div>
       <div className="flex flex-col lg:flex-row lg:gap-8 mt-12">

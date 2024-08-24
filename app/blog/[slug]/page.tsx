@@ -79,6 +79,7 @@ const ptComponents = {
 
 const QUERY = `*[_type == "post" && slug.current == $slug][0]{
   title,
+  description,
   slug,
   content,
   authorName,

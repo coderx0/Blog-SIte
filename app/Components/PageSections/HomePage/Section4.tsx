@@ -2,7 +2,26 @@ import { Blog } from "@/types";
 import RightArrow from "@/Icons/rightArrow";
 import Card2 from "../../Card2";
 
-const Section4 = ({ result, imp }: { result: Blog[]; imp: Blog }) => {
+import { client } from "../../../../utils/sanity/client";
+
+const QUERY = `*[_type == "post" && categories->title == $categoryTitle] | order(_createdAt desc)[0...3]{
+  title,
+  slug,
+  author->{
+    name
+  },
+  thumbnail,
+  tags,
+  description,
+  categories->{
+    title
+  },
+  _createdAt
+}`;
+
+const TechBlogs = async () => {
+  const result = await client.fetch(QUERY, { categoryTitle: "Tech" });
+
   return (
     <>
       <div className="mt-24">
@@ -14,7 +33,7 @@ const Section4 = ({ result, imp }: { result: Blog[]; imp: Blog }) => {
           </p>
         </div>
         <div className="flex flex-col md:flex-row gap-8 md:gap-0 md:justify-between">
-          {[imp, ...result].map((blog: Blog) => (
+          {result.map((blog: Blog) => (
             <div key={blog.title} className="flex flex-col gap-4 md:w-[400px]">
               <Card2 blog={blog} />
             </div>
@@ -25,4 +44,4 @@ const Section4 = ({ result, imp }: { result: Blog[]; imp: Blog }) => {
   );
 };
 
-export default Section4;
+export default TechBlogs;

@@ -9,6 +9,7 @@ import { BodyFont } from "@/fonts";
 import MoreLikeThisSection from "@/app/Components/PageSections/MoreLikeThis";
 import type { Metadata, ResolvingMetadata } from "next";
 import { Blog } from "@/types";
+import Image from "next/image";
 
 const builder = imageUrlBuilder(client);
 
@@ -24,7 +25,7 @@ const ptComponents = {
       }
       return (
         <div className="w-full flex justify-center items-center my-6 h-[220px]">
-          <img
+          <Image
             alt={value.alt || " "}
             loading="lazy"
             src={urlFor(value)
@@ -90,6 +91,15 @@ const QUERY = `*[_type == "post" && slug.current == $slug][0]{
   }
 }
 `;
+export const dynamicParams = true;
+
+export async function generateStaticParams() {
+  const slugs = await client.fetch(`*[_type == "post"][0...100].slug.current`);
+
+  return slugs.map((slug: string) => ({
+    slug,
+  }));
+}
 
 export async function generateMetadata(
   { params }: { params: { slug: string } },
@@ -117,7 +127,6 @@ export async function generateMetadata(
 
 const BlogDetails = async ({ params }: { params: { slug: string } }) => {
   const result = await client.fetch(QUERY, { slug: params.slug });
-
   return (
     <div>
       <div className="flex flex-col lg:flex-row lg:gap-8 mt-12">
@@ -126,8 +135,8 @@ const BlogDetails = async ({ params }: { params: { slug: string } }) => {
           <div className="my-12 md:px-12">
             <ImageComponent
               imgSrc={result.thumbnail}
-              height={220}
-              width={370}
+              width={700}
+              height={400}
               animate={false}
             />
           </div>

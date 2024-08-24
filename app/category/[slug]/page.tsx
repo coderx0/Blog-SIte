@@ -1,4 +1,4 @@
-import ImageComponent from "@/Components/ImageComponent/Image";
+import ImageComponent from "@/app/Components/ImageComponent/Image";
 import { client } from "../../../utils/sanity/client";
 import Link from "next/link";
 

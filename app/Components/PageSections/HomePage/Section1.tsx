@@ -1,7 +1,7 @@
 import React from "react";
 import Link from "next/link";
-import ImageComponent from "@/Components/ImageComponent/Image";
-import Card from "@/Components/Card";
+import ImageComponent from "../../ImageComponent/Image";
+import Card from "../../Card";
 import { Blog } from "@/types";
 import { BodyFont } from "@/fonts";
 

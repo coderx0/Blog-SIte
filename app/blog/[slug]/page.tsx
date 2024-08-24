@@ -1,4 +1,4 @@
-import ImageComponent from "@/Components/ImageComponent/Image";
+import ImageComponent from "@/app/Components/ImageComponent/Image";
 import { client } from "../../../utils/sanity/client";
 import {
   PortableText,
@@ -6,7 +6,7 @@ import {
 } from "@portabletext/react";
 import imageUrlBuilder from "@sanity/image-url";
 import { BodyFont } from "@/fonts";
-import MoreLikeThisSection from "@/Components/PageSections/MoreLikeThis";
+import MoreLikeThisSection from "@/app/Components/PageSections/MoreLikeThis";
 import type { Metadata, ResolvingMetadata } from "next";
 import { Blog } from "@/types";
 

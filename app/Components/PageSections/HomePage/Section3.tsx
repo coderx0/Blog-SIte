@@ -1,5 +1,5 @@
 import Link from "next/link";
-import ImageComponent from "@/Components/ImageComponent/Image";
+import ImageComponent from "../../ImageComponent/Image";
 import { Blog } from "@/types";
 import RightArrow from "@/Icons/rightArrow";
 

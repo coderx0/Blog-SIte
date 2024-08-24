@@ -1,9 +1,6 @@
-import Link from "next/link";
-import ImageComponent from "@/Components/ImageComponent/Image";
 import { Blog } from "@/types";
 import RightArrow from "@/Icons/rightArrow";
-import Card from "@/Components/Card";
-import Card2 from "@/Components/Card2";
+import Card2 from "../../Card2";
 
 const Section2 = ({ result, imp }: { result: Blog[]; imp: Blog }) => {
   return (

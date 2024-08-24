@@ -1,6 +1,6 @@
 import { Blog } from "@/types";
 import RightArrow from "@/Icons/rightArrow";
-import Card2 from "@/Components/Card2";
+import Card2 from "../../Card2";
 
 const Section4 = ({ result, imp }: { result: Blog[]; imp: Blog }) => {
   return (

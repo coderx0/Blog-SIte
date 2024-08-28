@@ -31,10 +31,10 @@ export default function RootLayout({
                     <Link href={"/category/Games"}>Games</Link>
                   </li>
                   <li>
-                    <Link href={"/category/Movies"}>Movies</Link>
+                    <Link href={"/category/Tech"}>Tech</Link>
                   </li>
                   <li>
-                    <Link href={"/category/Tech"}>Tech</Link>
+                    <Link href={"/category/Tech"}>Personal Development</Link>
                   </li>
                   <li>
                     <a>Trending</a>
@@ -79,9 +79,9 @@ export default function RootLayout({
             </ul>
           </div>
         </div>
-        <footer className="mt-12 bg-base-300 w-full flex flex-col justify-center items-center p-4 sm:p-8">
-          <p className="text-center text-3xl font-extrabold mb-4">Footer</p>
-          <div className="flex flex-col sm:flex-row sm:space-x-8">
+        <footer className="mt-12 bg-base-300 w-full flex flex-col md:flex-row gap-8 md:gap-20 p-4 sm:p-8">
+          <div className="text-left text-3xl font-extrabold mb-4">Debnews</div>
+          <div className="flex gap-12 sm:flex-row sm:space-x-8">
             <ul className="flex flex-col space-y-2 mb-4 sm:mb-0">
               <li>
                 <Link href={"/about"}>
@@ -102,12 +102,17 @@ export default function RootLayout({
             <ul className="flex flex-col space-y-2">
               <li>
                 <Link href={"/category/Movies"}>
-                  <p className="hover:text-gray-500">Movies</p>
+                  <p className="hover:text-gray-500">Games</p>
                 </Link>
               </li>
               <li>
                 <Link href={"/category/Tech"}>
                   <p className="hover:text-gray-500">Tech</p>
+                </Link>
+              </li>
+              <li>
+                <Link href={"/category/Tech"}>
+                  <p className="hover:text-gray-500">Personal Development</p>
                 </Link>
               </li>
               <li>

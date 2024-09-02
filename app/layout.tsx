@@ -103,7 +103,7 @@ export default function RootLayout({
             </ul>
             <ul className="flex flex-col space-y-2">
               <li>
-                <Link href={"/category/Movies"}>
+                <Link href={"/category/Games"}>
                   <p className="hover:text-gray-500">Games</p>
                 </Link>
               </li>
@@ -113,12 +113,12 @@ export default function RootLayout({
                 </Link>
               </li>
               <li>
-                <Link href={"/category/Tech"}>
+                <Link href={"/category/Personal Development"}>
                   <p className="hover:text-gray-500">Personal Development</p>
                 </Link>
               </li>
               <li>
-                <Link href={"/category/Trending"}>
+                <Link href={"/Trending"}>
                   <p className="hover:text-gray-500">Trending</p>
                 </Link>
               </li>

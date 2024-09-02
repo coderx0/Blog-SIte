@@ -9,10 +9,10 @@ const Section3 = ({ result, imp }: { result: Blog[]; imp: Blog }) => {
       <div className="w-full lg:w-[75%]">
         <div className="flex justify-between items-center mb-6">
           <h2 className="text-2xl font-bold">Latest</h2>
-          <p className="flex gap-2">
-            <span>View All</span>
+          {/* <p className="flex gap-2">
+            <span>View More</span>
             <RightArrow />
-          </p>
+          </p> */}
         </div>
         <div className="flex flex-col gap-8">
           {[imp, ...result].map((blog: any) => (

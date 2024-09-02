@@ -55,17 +55,24 @@ const ptComponents = {
     strong: ({ children }: any) => (
       <em className="font-semibold">{children}</em>
     ),
+    underline: ({ children }: any) => (
+      <u className="font-semibold block my-2">{children}</u>
+    ),
   },
   list: {
     bullet: ({ children }: any) => <ul className="mt-xl px-8">{children}</ul>,
-    number: ({ children }: any) => <ol className="mt-lg">{children}</ol>,
+    number: ({ children }: any) => (
+      <ol className="mt-lg pl-6 md:pl-12 flex flex-col gap-4">{children}</ol>
+    ),
   },
   listItem: {
     bullet: ({ children }: any) => (
       <li style={{ listStyleType: "disc" }}>{children}</li>
     ),
     number: ({ children }: any) => (
-      <li className="text-2xl text-red-200">{children}</li>
+      <li className="" style={{ listStyleType: "decimal" }}>
+        {children}
+      </li>
     ),
   },
   block: {

@@ -18,12 +18,16 @@ const QUERY = `*[_type == "post" && categories->title == $categoryTitle] | order
 }`;
 
 const BlogDetails = async ({ params }: { params: { slug: string } }) => {
-  const result = await client.fetch(QUERY, { categoryTitle: params.slug });
+  const result = await client.fetch(QUERY, {
+    categoryTitle: decodeURI(params.slug),
+  });
   return (
     <div className="mt-10 flex flex-col lg:flex-row justify-between ">
       <div className="w-full lg:w-[75%]">
         <div className="flex justify-between items-center mb-6 lg:mb-12">
-          <h2 className="text-2xl font-bold">Blogs in {params.slug}</h2>
+          <h2 className="text-2xl font-bold">
+            Blogs in {decodeURI(params.slug)}
+          </h2>
         </div>
         <div className="flex flex-col gap-8">
           {result.map((blog: any) => (

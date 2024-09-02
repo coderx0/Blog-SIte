@@ -34,7 +34,9 @@ export default function RootLayout({
                     <Link href={"/category/Tech"}>Tech</Link>
                   </li>
                   <li>
-                    <Link href={"/category/Tech"}>Personal Development</Link>
+                    <Link href={"/category/Personal Development"}>
+                      Personal Development
+                    </Link>
                   </li>
                   <li>
                     <a>Trending</a>

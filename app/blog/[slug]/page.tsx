@@ -10,6 +10,7 @@ import MoreLikeThisSection from "@/app/Components/PageSections/MoreLikeThis";
 import type { Metadata, ResolvingMetadata } from "next";
 import { Blog } from "@/types";
 import Image from "next/image";
+import { notFound } from "next/navigation";
 
 const builder = imageUrlBuilder(client);
 
@@ -112,9 +113,15 @@ export async function generateMetadata(
   { params }: { params: { slug: string } },
   parent: ResolvingMetadata
 ): Promise<Metadata> {
-  const result: Blog = await client.fetch(QUERY, { slug: params.slug });
+  const result: Blog | null = await client.fetch(QUERY, { slug: params.slug });
 
   // const previousImages = (await parent).openGraph?.images || []
+  if (!result) {
+    return {
+      title: "Blog not found",
+      description: "The blog you are looking for does not exist",
+    };
+  }
 
   return {
     title: result.title,
@@ -134,6 +141,11 @@ export async function generateMetadata(
 
 const BlogDetails = async ({ params }: { params: { slug: string } }) => {
   const result = await client.fetch(QUERY, { slug: params.slug });
+
+  if (!result) {
+    notFound();
+  }
+
   return (
     <div>
       <div className="flex flex-col lg:flex-row lg:gap-8 mt-12">

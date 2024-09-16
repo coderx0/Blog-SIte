@@ -1,25 +1,18 @@
 import ImageComponent from "@/app/Components/ImageComponent/Image";
 import { client } from "../../../utils/sanity/client";
 import Link from "next/link";
-
-const QUERY = `*[_type == "post" && categories->title == $categoryTitle] | order(_createdAt desc)[0...10]{
-  title,
-  slug,
-  author->{
-    name
-  },
-  thumbnail,
-  tags,
-  description,
-  categories->{
-    title
-  },
-  _createdAt
-}`;
+import { notFound } from "next/navigation";
+import { BlogsByCategory } from "../../../Queries/queries";
+const validCategories = ["Tech", "Games", "Personal Development"];
 
 const BlogDetails = async ({ params }: { params: { slug: string } }) => {
-  const result = await client.fetch(QUERY, {
-    categoryTitle: decodeURI(params.slug),
+  const { slug } = params;
+  const formattedSlug = slug.replace("%20", " ");
+  if (!validCategories.includes(formattedSlug)) {
+    return notFound();
+  }
+  const result = await client.fetch(BlogsByCategory, {
+    categoryTitle: decodeURI(formattedSlug),
   });
   return (
     <div className="mt-10 flex flex-col lg:flex-row justify-between ">
